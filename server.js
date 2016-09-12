@@ -22,15 +22,6 @@ app.get('/*', function (req, res) {
     res.write(json);
 });
 
-app.listen(8080, function () {
+app.listen(process.env.PORT || 8080, function () {
   console.log('Example app listening on port 8080!');
 });
-
-var net = require("net");
-var strftime = require('strftime')
-
-var server = net.createServer(function (socket) {
-    socket.end(strftime('%F %R\n', new Date()));
-});
-
-server.listen(process.argv[2]);
